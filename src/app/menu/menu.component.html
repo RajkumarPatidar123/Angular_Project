@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORS</title>
+
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: burlywood;
+            color: black;
+            text-align: center;
+            height: 35px;
+            padding-top: 5px;
+        }
+
+        .dropbtn {
+            background-color: #343a40;
+            color: black;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            padding: 5px;
+            /* float: left; */
+            /* margin-right: 25px; */
+            /* padding-right: 25px; */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #343a40;
+            min-width: 140px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: whitesmoke;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropbtn {
+            font-size: 15px;
+            background-color:burlywood;
+        }
+
+        .navbar {
+            background-color:burlywood;
+        }
+
+
+        .dropdown-content a:hover {
+            background-color: #686464;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #343a40;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <nav *ngIf="islogin()" class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#"><img src="assets/customLogo1.png" height="40px"></a>
+        <div style="padding-left: 50px;">
+            <div class="dropdown">
+                <i class="fa fa-user" style="font-size:17px;color:black;"></i>
+                <button class="dropbtn">User</button>.
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/user']"><i class="fa fa-user"
+                            style="font-size: 17px;color:black;"></i> User</a>
+                    <a class="nav-link" [routerLink]="['/userlist']"><i class="fa fa-list"
+                            style="font-size:17px;color:black;"></i> User List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-university" style="font-size: 17px;color:lightcoral"></i>
+                <button class="dropbtn">College</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/college']"><i class="fa fa-university"
+                            style="font-size: 17px;color:lightcoral"></i> College</a>
+                    <a class="nav-link" [routerLink]="['/collegelist']"><i class="fa fa-list"
+                            style="font-size:17px;color:lightcoral"></i> College List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-book" style="font-size:17px;color:lavender;"></i>
+                <button class="dropbtn">Course</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/course']"><i class="fa fa-book"
+                            style="font-size:17px;color:lavender"></i> Course</a>
+                    <a class="nav-link" [routerLink]="['/courselist']"><i class="fa fa-list"
+                            style="font-size:17px;color:lavender;"></i> Course List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-server" style="font-size:17px;color:springgreen"></i>
+                <button class="dropbtn">Marksheet</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/marksheet']"><i class="fa fa-server"
+                            style="font-size:17px;color:springgreen;"></i> Marksheet</a>
+                    <a class="nav-link" [routerLink]="['/marksheetlist']"><i class="fa fa-list"
+                            style="font-size:17px;color:springgreen"></i> Marksheet List</a>
+                    <a class="nav-link" [routerLink]="['/meritlist']"><i class="fa fa-list"
+                            style="font-size:17px;color:springgreen"></i> Merit List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-users" style="font-size:17px;color:cadetblue"></i>
+                <button class="dropbtn">Role</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/role']"><i class="fa fa-users"
+                            style="font-size:17px;color:cadetblue"></i> Role</a>
+                    <a class="nav-link" [routerLink]="['/rolelist']"><i class="fa fa-list"
+                            style="font-size:17px;color:cadetblue"></i> Role List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-graduation-cap" style="font-size:17px;color:black"></i>
+                <button class="dropbtn">Student</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/student']"><i class="fa fa-graduation-cap"
+                            style="font-size:17px;color:black"></i> Student</a>
+                    <a class="nav-link" [routerLink]="['/studentlist']"><i class="fa fa-list"
+                            style="font-size:17px;color:black"></i> Student List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-folder" style="font-size:17px;color:lavender"></i>
+                <button class="dropbtn">Subject</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/subject']"><i class="fa fa-folder"
+                            style="font-size:17px;color:lavender"></i> Subject</a>
+                    <a class="nav-link" [routerLink]="['/subjectlist']"><i class="fa fa-list"
+                            style="font-size:17px;color:lavender"></i> Subject List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-address-book" style="font-size:17px;color:lightcoral"></i>
+                <button class="dropbtn">Faculty</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/addfaculty']"><i class="fa fa-address-book"
+                            style="font-size:17px;color:lightcoral"></i> Faculty</a>
+                    <a class="nav-link" [routerLink]="['/addfacultylist']"><i class="fa fa-list"
+                            style="font-size:17px;color:lightcoral"></i> Faculty List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-table" style="font-size:17px;color:cadetblue"></i>
+                <button class="dropbtn">TimeTable</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/timetable']"><i class="fa fa-folder"
+                            style="font-size:17px;color:cadetblue"></i> TimeTable</a>
+                    <a class="nav-link" [routerLink]="['/timetablelist']"><i class="fa fa-list"
+                            style="font-size:17px;color:cadetblue"></i> TimeTable List</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <i class="fa fa-info-circle" style="font-size:17px;color:springgreen"></i>
+                <button class="dropbtn">About</button>
+                <div class="dropdown-content">
+                    <a class="nav-link" [routerLink]="['/changepassword']"><i class="fa fa-unlock-alt"
+                            style="font-size:17px;color:springgreen"></i> Change Password</a>
+                    <a class="nav-link" [routerLink]="['/forgetpassword']"><i class="fa fa-key"
+                            style="font-size:17px;color:springgreen"></i> Forget Password</a>
+                </div>
+            </div>
+
+
+            <div class="dropdown">
+                <b style="color:black;font-size:18px;"><i class="fa fa-user-circle" style="color:black;"></i>
+                    {{firstname}}({{ rolename}})</b>
+                <div class="dropdown-content">
+                    <br>
+                    <a class="nav-link" [routerLink]="['/logout']"><i class="fa fa-sign-out"
+                            style="font-size:17px;color:black"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+    <div *ngIf="islogin()" class="footer">
+        <b>Copyright &copy; Rays Technologies</b>
+    </div>
+
+</body>
+
+</html>
